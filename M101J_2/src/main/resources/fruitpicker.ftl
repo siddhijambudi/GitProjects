@@ -7,7 +7,7 @@
 				<p>
 					<input type="radio" name="fruit" value="${fruit}">${fruit}</input>
 				</p>
-			<#list>
+			</#list>
 			<input type="submit" value="Submit"/>
 		</form>
 	</body>
