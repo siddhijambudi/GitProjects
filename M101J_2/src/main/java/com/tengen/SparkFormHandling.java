@@ -60,7 +60,7 @@ public class SparkFormHandling
 				final String fruit = request.queryParams("fruit");
 				if(fruit == null)
 				{
-					return ("why don't you pick one??????");
+					return ("why don't you pick one?");
 				}
 				else
 				{
