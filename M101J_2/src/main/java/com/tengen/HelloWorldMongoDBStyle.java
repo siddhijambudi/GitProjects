@@ -25,7 +25,10 @@ public class HelloWorldMongoDBStyle
 		DBCollection collection = database.getCollection("hello");
 		
 		DBObject document = collection.findOne();
+		String strName = (String) document.get("name");
+		
 		System.out.println(document);
+		System.out.println(strName);
 	}
 }
 
