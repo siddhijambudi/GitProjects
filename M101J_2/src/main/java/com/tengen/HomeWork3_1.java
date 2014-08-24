@@ -45,8 +45,13 @@ public class HomeWork3_1
 					
 	        while (cur.hasNext()) {
 	            DBObject objectToRemove = cur.next();
-	            System.out.println(objectToRemove);     
-	            //dbCollection.remove(objectToRemove);
+	           	           
+	            //update the collection
+	            BasicDBObject match = new BasicDBObject("_id", objectToRemove.get("_id"));
+	            BasicDBObject update = new BasicDBObject("scores", 
+	            	new BasicDBObject("type", "homework").append("score", result.get("min")));
+	            	            
+	           // dbCollection.update(match, new BasicDBObject("$pull", update));	            
 	        }	    
 		}
 	}
