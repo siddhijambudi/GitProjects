@@ -1,37 +1,39 @@
 <!doctype html>
 <html ng-app>
-	<head>
-		<title>Hello AngularJS</title>
-		
-		<!-- CSS -->
-		<!-- Bootstrap core CSS -->
-		<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
-		<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<!-- 	<link rel="stylesheet" href="assets/css/prettify.css">
+<head>
+<title>Hello AngularJS</title>
+
+<!-- CSS -->
+<!-- Bootstrap core CSS -->
+<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet" media="screen">
+<!-- 	<link rel="stylesheet" href="assets/css/prettify.css">
 		<link rel="stylesheet" href="assets/css/style.css" media="screen"> -->
 
-		<!-- Javascript files -->
-		<!-- jQuery -->
-		<script src="assets/js/jquery-1.11.0.min.js"></script>
-		<!-- Bootstrap JS -->
-		<script src="assets/bootstrap/js/bootstrap.min.js"></script>
-		<!--HL -->
-		<script src="assets/js/prettify/prettify.js"></script>
-		<!-- Custom scripts -->
-		<script src="assets/js/custom.js"></script>
-		
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
-		<!-- <script src="assets/js/angular.min.js"></script> -->
-		<script src="hello.js"></script>
-	</head>
+<!-- Javascript files -->
+<!-- jQuery -->
+<script src="assets/js/jquery-1.11.0.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<!--HL -->
+<script src="assets/js/prettify/prettify.js"></script>
+<!-- Custom scripts -->
+<script src="assets/js/custom.js"></script>
 
-	<body ng-controller="Hello">
-		<div class="container">
-			<h3>Users</h3>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+<!-- <script src="assets/js/angular.min.js"></script> -->
+<script src="hello.js"></script>
+</head>
+
+<body ng-controller="Hello">
+	<div class="container">
+		<h3>Users</h3>
 		<table class="table table-striped">
 			<thead>
-				<tr>					
-					<th>ID</th>					
+				<tr>
+					<th>ID</th>
 					<th>First Name</th>
 					<th>Last Name</th>
 					<th>Age</th>
@@ -43,36 +45,31 @@
 					<td>{{student.firstName}}</td>
 					<td>{{student.lastName}}</td>
 					<td>{{student.age}}</td>
-				</tr>				
+				</tr>
 			</tbody>
 		</table>
-			
+
 		<div ng-controller="Hello2">
-			
-			Student data is:	<p>{{student}}</p>		
-		
+
+			Student data is:
+			<p>{{student}}</p>
+
 			<form class="form-horizontal" role="form" ng-submit="submit()">
-			<div class="form-group">
-			
-				<label for="id" >id</label>
-			
-					<input ng-model="id" name="id">					
-				
-				<label for="firstname" >first name</label>
-				
-					<input ng-model="firstname" name="firstname">					
-				
-				<label for="lastname" >last name</label>
-				
-					<input ng-model="lastname" name="lastname">					
-				
-				<label for="age" >age</label>
-				
-					<input ng-model="age" name="age">				
-				
-			</div>
-			<input type="submit" id="submit" value="Use POST method" />
-		</form>		
-	</div>
-	</body>
+				<div class="form-group">
+					<label for="id">id</label> 
+					<input ng-model="id" name="id">
+
+					<label for="firstname">first name</label> 
+					<input ng-model="firstname" name="firstname"> 
+					
+					<label for="lastname">last name</label> 
+					<input ng-model="lastname" name="lastname"> 
+					
+					<label for="age">age</label> 
+					<input ng-model="age" name="age">
+				</div>
+				<input type="submit" id="submit" value="Use POST method" />
+			</form>
+		</div>
+</body>
 </html>
