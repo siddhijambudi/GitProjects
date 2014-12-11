@@ -8,6 +8,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
+import java.util.ArrayList;
 
 @Path("/hello")
 public class HelloWorldService {
@@ -24,16 +26,20 @@ public class HelloWorldService {
 	@GET
     @Path("/print/{name}")
     @Produces("application/json")
-    public Student produceJSON( @PathParam("name") String name ) {
-        Student st = new Student(name, "Marco1",190,120);
-        return st;
+    public List<Student> produceJSON( @PathParam("name") String name ) {
+		List<Student> students = new ArrayList<Student>();
+        Student st1 = new Student(name, "Marco1",190,120);
+        Student st2 = new Student(name, "Marco2",200,150);
+        students.add(st1);
+        students.add(st2);
+        return students;
     }
 	
 	@POST
 	@Path("/post")
 	@Consumes("application/json")
 	public Response consumeJSON(Student student) { 
-		String result = "Student : " + student;
+		String result = "Student : " + student;		
 		return Response.status(201).entity(result).build(); 
 	}	
 }
