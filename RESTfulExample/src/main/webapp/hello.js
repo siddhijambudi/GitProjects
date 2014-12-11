@@ -20,7 +20,6 @@ function Hello2($scope, $http)
 				{
 						$scope.student = data;
 				});
-		
 	};
 }
 
