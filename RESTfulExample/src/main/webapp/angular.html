@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="store">
+<head>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+</head>
+<body ng-controller="StoreController as store">
+	<script type="text/javascript"
+		src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+
+	<section ng-init="tab = 3">
+		<ul class="nav nav-pills">
+
+			<li	ng-class="{active:tab === 1}"><a href ng-click="tab = 1">Description</a></li>
+			<li ng-class="{active:tab === 2}"><a href ng-click="tab = 2">Specifications</a></li>
+			<li ng-class="{active:tab === 3}"><a href ng-click="tab = 3">Reviews</a></li>
+		</ul>
+	</section>
+
+	<div ng-repeat="product in store.products">
+
+		<div class="panel" ng-show="tab === 1">
+			<h4>Description</h4>
+			<p>{{product.desc}}</p>
+		</div>
+		<div class="panel" ng-show="tab === 2">
+			<h4>Specifications</h4>
+			<blockquote>Not yet1</blockquote>
+		</div>
+		<div class="panel" ng-show="tab === 3">
+			<h4>Reviews</h4>
+			<blockquote>Not yet2</blockquote>
+		</div>
+
+		<div ng-hide="store.product.soldOut">
+			<h1>{{product.name}}</h1>
+			<h2>{{product.price | currency}}</h2>
+			<p>{{product.desc}}</p>
+			<button ng-show="store.product.canPurchase">Add to Cart</button>
+			<img ng-src="{{product.images[1].full}}" />
+		</div>
+	</div>
+</body>
+</html>

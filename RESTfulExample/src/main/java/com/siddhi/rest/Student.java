@@ -6,7 +6,9 @@
  */
 package com.siddhi.rest;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
+import org.junit.Ignore;
  
 
 public class Student
@@ -18,7 +20,7 @@ public class Student
 	private int		age;
 
 	// Must have no-argument constructor
-
+	
 	public Student()
 	{
 
@@ -37,7 +39,7 @@ public class Student
 		this.firstName = fname;
 	}
 	
-	@JsonProperty("firstName")
+	@JsonProperty("firstName")	
 	public String getFirstName()
 	{
 		return this.firstName;
