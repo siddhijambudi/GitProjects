@@ -8,10 +8,10 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 public class JavaRestTweet {
-	static String consumerKeyStr = "IHb4MXXbMOGExy89iF2IPO2lZ";
-	static String consumerSecretStr = "bNYXqMxWHCm7lGtu8twTuF9Xssq9AO4p4rBmsb8YBBLl5lq3R8";
-	static String accessTokenStr = "337385276-9n6GchOfSpYOeWsTOhIldKynhcJSJXM4Fz65Wj8F";
-	static String accessTokenSecretStr = "lY832Hh19WTZrxQbnoe8R5HQT2lLb9wjQ9Tl5RnpcnQIj";
+	static String consumerKeyStr = "xxxxx";
+	static String consumerSecretStr = "xxxx";
+	static String accessTokenStr = "XXXX";
+	static String accessTokenSecretStr = "XXXX";
 
 
 	public static void main(String[] args) throws Exception {
