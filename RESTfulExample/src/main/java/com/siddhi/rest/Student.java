@@ -8,7 +8,6 @@ package com.siddhi.rest;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import org.codehaus.jackson.annotate.JsonProperty;
-import org.junit.Ignore;
  
 
 public class Student
