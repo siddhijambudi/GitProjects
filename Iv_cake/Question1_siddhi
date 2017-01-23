@@ -1,0 +1,50 @@
+package com.veeva.multichannel.mccp;
+
+/**
+ * Created by Siddhi Jambudi on 1/23/2017.
+ */
+public class Question1_siddhi {
+    public static void main(String args[]){
+        int[] stockPricesYesterday = new int[]{10, 13, 10, 13, 10, 13};
+        System.out.print(getMaxProfit1(stockPricesYesterday));
+    }
+    public static int getMaxProfit1(int[] stockPricesYesterday){
+        int minIndex = -1;
+        int maxIndex = -1;
+        int j = 0;
+        for(int i = 0; i <= stockPricesYesterday.length - 1; i++){
+            if(i < stockPricesYesterday.length - 1) {
+                j = i + 1;
+            }
+            if(minIndex != -1 && stockPricesYesterday[i] <= stockPricesYesterday[minIndex] && i != minIndex){
+                minIndex = i;
+            }
+            if(maxIndex != -1 && stockPricesYesterday[j] >= stockPricesYesterday[maxIndex] && j != maxIndex){
+                maxIndex = j;
+            }
+            if(stockPricesYesterday[i] <= stockPricesYesterday[j]){
+                if(minIndex == -1 || (i != minIndex && stockPricesYesterday[i] < stockPricesYesterday[minIndex])) {
+                    minIndex = i;
+                }
+                if(maxIndex == -1 || (j != maxIndex && stockPricesYesterday[j] > stockPricesYesterday[maxIndex])) {
+                    maxIndex = j;
+                }
+            }
+            if(stockPricesYesterday[i] >= stockPricesYesterday[j]){
+                if(minIndex == -1 || (j != minIndex && stockPricesYesterday[j] < stockPricesYesterday[minIndex])) {
+                    minIndex = j;
+                }
+                if(maxIndex == -1 || (i != maxIndex && stockPricesYesterday[i] > stockPricesYesterday[maxIndex])) {
+                    maxIndex = i;
+                }
+            }
+        }
+        if((minIndex < maxIndex) && (maxIndex - minIndex >= 1) ){
+            return stockPricesYesterday[maxIndex] - stockPricesYesterday[minIndex];
+        }
+        else if(minIndex > maxIndex){
+            return stockPricesYesterday[minIndex] - stockPricesYesterday[maxIndex];
+        }
+        return 0;
+    }
+}
