@@ -1,3 +1,4 @@
+ //You have an array of integers, and for each index you want to find the product of every integer except the integer at that index.
  public static int[] getProductsOfAllIntsExceptAtIndex(int[] inputArray){
         int[] productsOfAllIntsBeforeIndex = new int[inputArray.length];
         int productSoFar = 1;
