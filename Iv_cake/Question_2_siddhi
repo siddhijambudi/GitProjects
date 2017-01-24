@@ -1,0 +1,14 @@
+ public static int[] getProductsOfAllIntsExceptAtIndex(int[] inputArray){
+        int[] productsOfAllIntsBeforeIndex = new int[inputArray.length];
+        int productSoFar = 1;
+        for(int i = 0; i < inputArray.length; i++){
+            productsOfAllIntsBeforeIndex[i] = productSoFar;
+            productSoFar *= inputArray[i];
+        }
+        productSoFar = 1;
+        for (int i = inputArray.length - 1; i >= 0; i--) {
+            productsOfAllIntsBeforeIndex[i] = productsOfAllIntsBeforeIndex[i] * productSoFar;
+            productSoFar *= inputArray[i];
+        }
+        return productsOfAllIntsBeforeIndex;
+    }
