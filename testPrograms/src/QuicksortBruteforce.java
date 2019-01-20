@@ -2,6 +2,7 @@ import java.util.*;
 
 public class QuicksortBruteforce {
 
+    static NameObjectComparator nameObjectComparator = new NameObjectComparator();
     public static void main(String args[]){
         List<NameObject> arr = new ArrayList<>();
 
@@ -18,17 +19,29 @@ public class QuicksortBruteforce {
         NameObject n3 = new NameObject();
         n3.setFirstName("Siddhi");
         n3.setLastName("shah");
-        n3.setAge(40);
+        n3.setAge(42);
 
         NameObject n4 = new NameObject();
         n4.setFirstName("Siddhi");
         n4.setLastName("shah");
         n4.setAge(37);
 
+        NameObject n5 = new NameObject();
+        n5.setFirstName("Siddhi");
+        n5.setLastName("shah");
+        n5.setAge(40);
+
+        NameObject n6 = new NameObject();
+        n6.setFirstName("Siddhi");
+        n6.setLastName("shah");
+        n6.setAge(36);
+
         arr.add(n1);
         arr.add(n2);
         arr.add(n3);
         arr.add(n4);
+        arr.add(n5);
+        arr.add(n6);
 
         List<NameObject> sortedArr = quicksort(arr);
         for(NameObject i : sortedArr){
@@ -50,12 +63,11 @@ public class QuicksortBruteforce {
         for(int i = 0; i < sizeOfArray; i++){
              if(i != pivotIndex){
                 NameObject arrValue = arr.get(i);
-                NameObjectComparator nameObjectComparator = new NameObjectComparator();
 
-                if(nameObjectComparator.compare(arrValue, pivotVal) < 1){
+                if(nameObjectComparator.compare(arrValue, pivotVal) < 0){
                     smaller.add(arrValue);
                 }
-                else if(nameObjectComparator.compare(arrValue, pivotVal) > 1){
+                else if(nameObjectComparator.compare(arrValue, pivotVal) > 0){
                     bigger.add(arrValue);
                 }
                 else{
@@ -112,12 +124,7 @@ class NameObjectComparator implements Comparator<NameObject>{
     public int compare(final NameObject o1, final NameObject o2) {
         if(o1.getFirstName().equals(o2.getFirstName())){
             if(o1.getLastName().equals(o2.getLastName())){
-                if(o1.getAge() < o2.getAge()){
-                    return -1;
-                }
-                else{
-                    return 1;
-                }
+                return 0;
             }
             else {
                 int val = o1.getLastName().compareTo(o2.getLastName());
