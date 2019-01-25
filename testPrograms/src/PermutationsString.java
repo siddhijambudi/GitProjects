@@ -10,7 +10,7 @@
 public class PermutationsString
 {
 	public static void main(String args[]){
-		permutation("cat");
+		permutation("bcef");
 	}
 	public static void permutation(String str) { 
 	    permutation("", str); 

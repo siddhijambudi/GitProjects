@@ -10,14 +10,16 @@ public class Test9
 {
 	public static void main(String args[])
 	{
-		int[] array = new int[]{23, 42, 4, 16, 8, 15};
+		//int[] array = new int[]{23, 42, 4, 16, 8, 15};
 		//int[] array = new int[]{4,8,15,16,23,42};
 		//insertionSort(array);
 		//bubbleSort(array);
 		//selectionSort(array);
-		quickSort(array, 0, array.length-1);
-		
-		printArray(array);
+		//quickSort(array, 0, array.length-1);
+
+		int[] arr = new int[]{71,66,71,82};
+		dutchFlag("GBGGR");
+		printArray();
 	}
 	
 	public static void quickSort(int[] A, int p, int r)
@@ -70,7 +72,7 @@ public class Test9
 			array[i] = array[currMin];
 			array[currMin] = temp;
 		}
-		printArray(array);
+		//printArray(array);
 	}
 	public static void bubbleSort(int[] array){
 		int n = array.length;
@@ -94,10 +96,13 @@ public class Test9
 				j++;
 			}
 		}
-		printArray(array);
+		//printArray(array);
 	}
+
 	public static void insertionSort(int[] array)
 	{
+
+
 		for(int i = 0; i < array.length; i++){
 			int j = 0;
 			while(j < i){
@@ -109,15 +114,39 @@ public class Test9
 				j++;
 			} 
 		}
-		
-	}
-	
-	public static void printArray(int[] array)
-	{
 
 		for(int i = 0; i< array.length; i++){
 			System.out.println(array[i]);
 		}
+	}
+	
+	public static void printArray()
+	{
+		String str = "GBGG";
+		char[] arr = str.toCharArray();
+		for(int i = 0; i < arr.length; i++){
+			System.out.println((int) arr[i]);
+		}
+
+		/*for(int i = 0; i< array.length; i++){
+			System.out.println(array[i]);
+		}*/
+	}
+
+	public static String dutchFlag(String str){
+		char[] charArr = str.toCharArray();
+
+		for(int i = 1; i < charArr.length; i++){
+			int key = (int) charArr[i];
+			int j = i - 1;
+
+			while(j >= 0 && (int) charArr[j] < key){
+				charArr[j+1] = charArr[j];
+				j--;
+			}
+			charArr[j+1] = (char) key;
+		}
+		return new String(charArr);
 	}
 }
 

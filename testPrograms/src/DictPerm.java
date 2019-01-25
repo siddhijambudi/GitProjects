@@ -9,7 +9,7 @@ public class DictPerm {
         perm(arr, 0, arr.length);
     }
     public static void perm(char[] arr, int prefix, int length){
-        if(prefix == length){
+        if(prefix == length - 1){
             if(validWord(arr)) {
                 for(char i : arr) {
                     System.out.print(i);
@@ -23,7 +23,6 @@ public class DictPerm {
             swap(arr, prefix, levelChar);
 
             if(validWordPrefix(arr, prefix + 1)){
-
 
                 perm(arr,prefix + 1, length);
 

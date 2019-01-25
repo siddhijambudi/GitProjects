@@ -1,11 +1,14 @@
 public class MergeTwoArrays {
     public static void main(String args[]){
-        int[] arr = new int[]{15,20,2,4,25,3,14,19};
 
-        mergeSort(arr, 0, arr.length - 1);
+        int[] arr1 = new int[]{2,4,6,0,0,0};
+        int[] arr2 = new int[]{1,3,5};
 
-        for(int i = 0; i < arr.length; i++){
-            System.out.println(arr[i]);
+        //mergeSort(arr, 0, arr.length - 1);
+        int[] merged = sortedMergeInPlace(arr1, arr2);
+
+        for(int i : merged){
+            System.out.println(i);
         }
     }
     static void mergeSort(int[] arr, int start, int end){
@@ -32,7 +35,11 @@ public class MergeTwoArrays {
         for(int i = 0; i < sizeOfSecondArray; i++){
             secondArray[i] = arr[mid + 1 + i];
         }
+        mergeTwoArrays(arr, start, sizeOfFirstArray, sizeOfSecondArray, firstArray, secondArray);
+    }
 
+    private static void mergeTwoArrays(int[] arr, int start, int sizeOfFirstArray, int sizeOfSecondArray,
+            int[] firstArray, int[] secondArray) {
         int fp = 0;
         int sp = 0;
         int auxp = start;
@@ -60,5 +67,37 @@ public class MergeTwoArrays {
             auxp ++;
             sp ++;
         }
+    }
+
+    static int[] sortedMergeInPlace(int a[], int b[])
+    {
+        int n = a.length / 2;
+        int m = b.length;
+
+        int i = n - 1;
+        int j = m - 1;
+
+        int lastIndex = n + m - 1;
+
+        // Merge a and b, starting
+        // from last element in each
+        while (j >= 0)
+        {
+            /* End of a is greater than end of b */
+            if (i >= 0 && a[i] > b[j])
+            {
+                // Copy Element
+                a[lastIndex] = a[i];
+                i--;
+            } else
+            {
+                // Copy Element
+                a[lastIndex] = b[j];
+                j--;
+            }
+            // Move indices
+            lastIndex--;
+        }
+        return a;
     }
 }

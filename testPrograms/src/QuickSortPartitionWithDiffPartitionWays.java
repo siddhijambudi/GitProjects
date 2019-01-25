@@ -1,14 +1,27 @@
+import java.lang.reflect.Array;
+import java.util.*;
+
 public class QuickSortPartitionWithDiffPartitionWays {
     public static void main(String args[]){
         //int[] arr = new int[]{12,76,-1,4,33,0};
-        int[] arr = new int[]{12,11,10,9,8,7,6,5,4,3,2,1};
+        List<Integer> arr = new ArrayList<>();
+        arr.add(12);
+        arr.add(76);
+        arr.add(-1);
+        arr.add(4);
+        arr.add(33);
+        arr.add(0);
 
-        int[] sortedArr = quicksortWithTwoPivots(arr, 0, arr.length - 1);
+        //new int[]{12,76,-1,4,33,0};
+        //int[] arr = new int[]{12,11,10,9,8,7,6,5,4,3,2,1};
+        //int[] arr = new int[]{12,11,10,8,8,8,6,8,4,8,2,1};
+
+        List<Integer> sortedArr = quicksort(arr, 0, arr.size() - 1);
         for(int i : sortedArr){
             System.out.println(i);
         }
     }
-    public static int[] quicksortWithTwoPivots(int[] arr, int start, int end){
+    /*public static int[] quicksortWithTwoPivots(int[] arr, int start, int end){
         if((start == end) || start == end + 1){
             return arr;
         }
@@ -20,7 +33,7 @@ public class QuickSortPartitionWithDiffPartitionWays {
         quicksort(arr, pivotIndexsAfterPartitioning[1] + 1, end);
 
         return arr;
-    }
+    }*/
     private static int[] partitioningHoare2Pivots(int[] arr, int start, int end, int[] pivotIndexs){
         int i = start;
         int j = end;
@@ -69,20 +82,35 @@ public class QuickSortPartitionWithDiffPartitionWays {
             return p;
         }
     }
-    public static int[] quicksort(int[] arr, int start, int end){
+
+    public static List<Integer> quicksort(List<Integer> arr, int start, int end){
         if(start == end){
             return arr;
         }
-        if(start >= end){
+        if(start >= end + 1){
             return arr;
         }
-        int pivotIndex = choosePivot(arr,start,end);
-        int pivotIndexAfterPartitioning = partitioningHoare(arr, start, end, pivotIndex);
+        int pivotIndex = choosePivot(arr);
+        List<Integer> newArray = partitioningBruteForce(arr, start, end, pivotIndex);
 
-        quicksort(arr, start, pivotIndexAfterPartitioning - 1);
-        quicksort(arr, pivotIndexAfterPartitioning + 1, end);
+        //0 to pivotIndex - 1 = smaller array // 0 to 2
+        //pivotIndex // 3
+        //pivotIndex + 1 to end = greater array // 4 to 5
 
-        return arr;
+        List<Integer> smaller = new ArrayList();
+        List<Integer> bigger = new ArrayList();
+        int pivotValue = newArray.get(pivotIndex);
+
+        for(int i = 0; i < pivotIndex; i++){
+            smaller.add(newArray.get(i));
+        }
+        for(int i = pivotIndex + 1; i <= end; i ++){
+            bigger.add(newArray.get(i));
+        }
+        List<Integer> list1 = quicksort(smaller, start, smaller.size() - 1);
+        list1.add(pivotValue);
+        list1.addAll(quicksort(newArray, start, bigger.size() - 1));
+        return list1;
     }
 
     private static int[] choose2Pivots(int[] arr, int start, int end){
@@ -91,29 +119,51 @@ public class QuickSortPartitionWithDiffPartitionWays {
         arr2Pivots[1] = end;
         return arr2Pivots;
     }
-    private static int choosePivot(int[] arr, int start, int end){
-       return (start + end) / 2;
+    private static int choosePivot(List<Integer> arr){
+       return arr.size() / 2;
     }
-    private static int partitioningBruteForce(int[] arr, int start, int end, int pivotIndex){
+    private static List<Integer> partitioningBruteForce(List<Integer> arr, int start, int end, int pivotIndex){
+        Map<String, Object> map = new HashMap<>();
+        int pivotVal = arr.get(pivotIndex);
+
         //get how many elements are less than pivot
         int le_count = 0;
-        for(int i : arr){
-            if(i < arr[pivotIndex]){
+        for(int i = start; i < end; i++){
+            if(arr.get(i) <= pivotVal){
                 le_count++;
             }
         }
+
+        //total no of elements less than pivot index is le_count
+
+        //left of pivot will be 0 to le_count - 1
+        //le_count  = pivot index
+        //le_count + 1 to end = greater nos than pivot no.
+
+        List<Integer> outArr = new ArrayList<>(Collections.nCopies(arr.size(), 0));
+        outArr.set(le_count, pivotVal);
+
+        int le = 0;
+        int ge = le_count + 1;
+
         //put all less than pivot on the left side in new array
-        int[] outArr = new int[arr.length];
-        int ge_count = le_count;
-        for(int i : arr){
-            if(i < arr[pivotIndex]){
-                outArr[le_count ++] = i;
+        for(int i = start; i < end; i++){
+            //do it until pivotindex is found
+            if(i == pivotIndex){
+                continue;
             }
-            else{
-                outArr[ge_count ++] = i;
+            //if element is smaller than pivot value then le_count increment
+            if(arr.get(i) <= pivotVal){
+                outArr.set(le, arr.get(i));
+                le++;
+            }else{
+                outArr.set(ge, arr.get(i));
+                ge++;
             }
         }
-        return le_count - 1;
+        map.put("outArr", outArr);
+        map.put("newPivot", pivotIndex);
+        return outArr;
     }
     private static int partitioningHoare(int[] arr, int start, int end, int pivotIndex){
         int i = start;
@@ -167,4 +217,5 @@ public class QuickSortPartitionWithDiffPartitionWays {
 
         return i;
     }
+
 }
