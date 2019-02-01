@@ -25,7 +25,7 @@ public class PostOrderBinaryTreeIteratorImpl implements PostOrderTraversalIterat
 
     @Override
     public boolean hasNext() {
-        return !s.isEmpty(); //true if stack is not empty.
+        return !s.isEmpty();
     }
 
     @Override
