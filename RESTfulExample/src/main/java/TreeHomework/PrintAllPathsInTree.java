@@ -1,7 +1,5 @@
 package TreeHomework;
 
-import java.awt.*;
-
 public class PrintAllPathsInTree {
     public static void main(String args[]){
         Node root = createTree();
@@ -21,35 +19,35 @@ public class PrintAllPathsInTree {
     }
     private static Node createTree(){
 
-        Node root = new Node();
-        root.val = 1;
+        Node root = new Node(1);
+        //root.val = 1;
 
         /***************************/
-        Node left = new Node();
-        left.val = 2;
+        Node left = new Node(2);
+        //left.val = 2;
         root.left = left;
 
-        Node left_2 = new Node();
-        left_2.val = 4;
+        Node left_2 = new Node(4);
+        //left_2.val = 4;
         root.left.left = left_2;
 
-        Node right_2 = new Node();
-        right_2.val = 5;
+        Node right_2 = new Node(5);
+        //ight_2.val = 5;
         root.left.right = right_2;
 
         /***************************/
 
 
-        Node right = new Node();
-        right.val = 3;
+        Node right = new Node(3);
+        //right.val = 3;
         root.right = right;
 
-        Node right_31 = new Node();
-        right_31.val = 6;
+        Node right_31 = new Node(6);
+        //right_31.val = 6;
         root.right.left = right_31;
 
-        Node right_3 = new Node();
-        right_3.val = 7;
+        Node right_3 = new Node(7);
+        //right_3.val = 7;
         root.right.right = right_3;
 
         /***************************/

@@ -2,27 +2,27 @@ package TreeHomework;
 
 public class SumOfAllNodes {
     public static void main(String args[]){
-        Node root = new Node();
-        root.val = 5;
+        Node root = new Node(5);
+        //root.val = 5;
 
-        Node left = new Node();
-        left.val = 1;
+        Node left = new Node(1);
+        //left.val = 1;
         root.left = left;
 
-        Node right = new Node();
-        right.val = 5;
+        Node right = new Node(5);
+        //right.val = 5;
         root.right = right;
 
-        Node left_2 = new Node();
-        left_2.val = 5;
+        Node left_2 = new Node(5);
+        //left_2.val = 5;
         root.left.left = left_2;
 
-        Node right_2 = new Node();
-        right_2.val = 5;
+        Node right_2 = new Node(5);
+        //right_2.val = 5;
         root.left.right = right_2;
 
-        Node right_3 = new Node();
-        right_3.val = 5;
+        Node right_3 = new Node(5);
+        //right_3.val = 5;
         root.right.right = right_3;
 
         //List<Integer> count = new ArrayList<Integer>();
