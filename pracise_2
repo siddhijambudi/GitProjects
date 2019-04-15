@@ -1,12 +1,81 @@
 package com.veeva.multichannel.mccp.engine;
 
 import java.util.Comparator;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Set;
 
 /**
  * Created by sjambudi on 4/15/2019.
  */
 public class SiddhiTest1 {
+    private static void removeInvalidParenthesis(String str){
+        if(str.isEmpty()){
+            return;
+        }
+        Set<String> visit = new HashSet<>();
+        Queue<String> queue = new LinkedList<>();
+
+        String temp;
+        boolean level = false;
+
+        queue.add(str);
+        visit.add(str);
+
+        while (!queue.isEmpty())
+        {
+            str = queue.poll();
+            if (isValidString(str))
+            {
+                System.out.println(str);
+
+                // If answer is found, make level true
+                // so that valid string of only that level
+                // are processed.
+                level = true;
+            }
+            if (level) {
+                continue;
+            }
+            for (int i = 0; i < str.length(); i++)
+            {
+                if (!isParenthesis(str.charAt(i))){
+                    continue;
+                }
+
+                // Removing parenthesis from str and
+                // pushing into queue,if not visited already
+                temp = str.substring(0, i) + str.substring(i + 1);
+                if (!visit.contains(temp)) {
+                    queue.add(temp);
+                    visit.add(temp);
+                }
+            }
+        }
+    }
+
+    static boolean isParenthesis(char c) {
+        return ((c == '(') || (c == ')'));
+    }
+
+    // method returns true if string contains valid
+    // parenthesis
+    private static boolean isValidString(String str)
+    {
+        int cnt = 0;
+        for (int i = 0; i < str.length(); i++)
+        {
+            if (str.charAt(i) == '(')
+                cnt++;
+            else if (str.charAt(i) == ')')
+                cnt--;
+            if (cnt < 0)
+                return false;
+        }
+        return (cnt == 0);
+    }
 
     // function to merge k sorted linked lists
     public static Node mergeKSortedLists(Node arr[], int k)
@@ -78,7 +147,7 @@ public class SiddhiTest1 {
     }
 
     public static void main(String args[]) {
-        int k = 3; // Number of linked lists
+      /*  int k = 3; // Number of linked lists
         int n = 4; // Number of elements in each list
 
         // an array of pointers storing the head nodes
@@ -102,7 +171,13 @@ public class SiddhiTest1 {
 
         // Merge all lists
         Node head = mergeKSortedLists(arr, k);
-        printList(head);
+        printList(head);*/
+
+        String expression = "()())()";
+        removeInvalidParenthesis(expression);
+
+        expression = "()v)";
+        removeInvalidParenthesis(expression);
     }
 }
 
