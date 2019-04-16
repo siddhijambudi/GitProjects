@@ -1,0 +1,64 @@
+// Class name must be "Main"
+// Libraries included:
+// json simple, guava, apache commons lang3, junit, jmock
+
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, world!");
+        int[] arr = new int[] {1,1,1,2,2,3,4,4,4,5,6,7};
+        int k = 2;
+        for(int i : top(arr,k)){
+            System.out.print(i + " ");
+        }
+    }
+    private static List<Integer> top(int[] arr, int k){
+        //get map of no and freq
+        Map<Integer,Integer> map = new HashMap();
+        for(int i : arr){
+            if(map.containsKey(i)){
+                map.put(i, map.get(i) + 1);
+            }else{
+                map.put(i, 1);
+            }
+        }
+        
+        //put map items in queue 
+        Queue<Pair> queue = new PriorityQueue<Pair>(k, new MinHeapComparator());
+        
+        for(Map.Entry<Integer,Integer> entry: map.entrySet()){
+             Pair pair = new Pair(entry.getKey(), entry.getValue());
+             queue.add(pair);
+            
+            if(queue.size() > k){
+                 queue.poll(); //min freq value will be pulled out    
+            }
+        }
+        
+        //get k items from the top
+        List<Integer> result = new ArrayList();
+        Iterator<Pair> i = queue.iterator();
+        while(i.hasNext()){
+            result.add(i.next().num);
+        }
+        return result;
+    }
+}
+class MinHeapComparator implements Comparator<Pair>{
+    @Override
+    public int compare(Pair o1, Pair o2){
+         return o1.count - o2.count;   
+    }
+}
+class Pair{
+    int num;
+    int count;
+    
+    Pair(int num, int count){
+        this.num = num;
+        this.count = count;
+    }
+}
+    
+    
+    
